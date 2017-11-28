@@ -181,13 +181,13 @@ you have a green bar within your IDE:
 
 image::idea_test_success.png[width=750]
 
-You should see 4 successful tests (or 5 if you have also
-completed the advanced challenge).
+You should see 4 successful tests (or more if you have also
+completed the advanced challenges).
 
 === Advanced challenge
 
-The `CustomCanonicalTest` class contains one commented out
-test. Remove the comment characters and make the test pass
+The `CustomCanonicalTest` class contains some commented out
+tests. Remove the comment characters and make the tests pass
 without invalidating any of the existing tests.
 
 In order to satisfy the test, you will need to
