@@ -1,0 +1,102 @@
+= Lab Instructions
+:icons: font
+
+== Files Of Interest
+- `src/main/groovy/WithLogging.groovy`
+- `src/main/groovy/WithLoggingASTTransformation.groovy`
+- `src/test/groovy/WithLoggingSpec.groovy`
+
+This lab gives you the opportunity to learn about
+writing your own local AST transformation. You will
+be given a working AST transformation and asked to
+extend it.
+
+== Notes
+
+The lab is designed to run with Groovy 2.5.0-beta-2.
+Gradle should download that version automatically the
+first time it is run if you don't already have it.
+The labs were tested with JDK8. You may get warning messages
+running with JDK9.
+
+The tests initially will pass. The AST transformation is
+designed to work on method nodes. Modify the test so that
+the `@WithLogging` annotation is at the class level instead
+of on the two methods. Re-run the tests. They will now fail.
+Your task is to make them pass again by changing the
+AST transformation to support annotating at the class
+(`ElementType.TYPE`) level. You can also leave the
+method level support in place if you code your solution carefully.
+
+Hints:
+
+- you can check what kind of node you have using expressions
+like `node instanceof ClassNode` and `node instanceof MethodNode`
+- you can process the methods of a class node using `node.methods.each{...}`
+- you should skip internal methods which contain a dollar character using code like `findAll { !it.name.contains('$') }`
+
+=== Running The Tests
+
+The `test` Gradle task will run the unit tests.
+
+```
+$ ./gradlew test
+
+[...output not shown...]
+
+BUILD SUCCESSFUL
+```
+
+NOTE: On OS X and Linux the tests may be run with `./gradlew test`.  On Windows the tests may be run with `gradlew test`.
+`gradlew` is the Gradle Wrapper which will download Gradle the first time it is run.  This download only happens the first
+time `gradlew` is run for any particular version of Gradle.
+
+The output written to the console mentions that the test report
+is available at `build/reports/tests/index.html`.  That report will include
+details describing what went wrong while tests were running.
+
+== Import The Project Into IDEA 2017
+
+Select "Open" and use the file navigator to select the root folder for the project.
+
+image::import_02.png[width=750]
+
+On the Import Project from Gradle dialog that follows, leave the default settings unchanged.
+
+image::import_03.png[width=750]
+
+The first time you open a Groovy project in the IDE, the IDE may
+take a few minutes to resolve and index dependencies.  Once the project
+is initialized, you should be able to navigate to the source files
+that are relevant to this lab.
+
+image::idea_project.png[width=750]
+
+=== Satisfying WithLoggingSpec
+
+The `WithLoggingSpec` describes the behavior we are expecting our
+`WithLogging` annotation to support.
+
+[source,groovy]
+----
+include::{projectdir}/src/test/groovy/WithLoggingSpec.groovy[]
+----
+
+You will know you have completed the lab when
+you have made the changes to the test described above
+and then the Gradle build says `BUILD SUCCESSFUL` when running
+the tests or you have a green bar within your IDE:
+
+image::idea_test_success.png[width=750]
+
+You should see the green bar and some logging to standard output.
+
+=== Advanced challenge
+
+Add support for tracing constructors.
+
+Assuming you have retained support at the method level,
+change the test to have the annotation at both the class
+and method levels. What do you observe when running the
+test again. Consider what you might do to remedy what you see.
+
