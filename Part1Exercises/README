@@ -1,0 +1,24 @@
+The exercises for the initial part of this workshop are relatively simple.
+If you don't want to use an IDE (recommended) you have some other options
+detailed below. You only need to set up ONE of these options.
+
+
+Option 1 (recommended): Using an IDE (intelliJ recomended) and Gradle
+
+To build the lab documentation run the following:
+
+    ./gradlew asciidoctor (skip the initial ./ for windows)
+
+The generated documentation should be at build/asciidoc/index.html.
+This approach uses gradle which will download all the needed dependencies.
+
+
+Option 2: Using a Groovy distribution with the GroovyConsole/text editor
+
+If you don't already have a Groovy distribution, download it from here:
+https://dl.bintray.com/groovy/maven/apache-groovy-binary-2.5.0-beta-2.zip
+
+You might find these documentation links useful:
+http://docs.groovy-lang.org/docs/groovy-2.5.0-beta-2/html/documentation/
+http://docs.groovy-lang.org/docs/groovy-2.5.0-beta-2/html/groovy-jdk/
+http://docs.groovy-lang.org/docs/groovy-2.5.0-beta-2/html/gapi/
