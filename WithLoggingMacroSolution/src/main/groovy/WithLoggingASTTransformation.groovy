@@ -25,9 +25,9 @@ class WithLoggingASTTransformation implements ASTTransformation {
     }
 
     private static void processMethod(MethodNode method) {
-        def startMsg = constX(method.name)
-        def startStmt = macro(true) { println 'Starting ' + $v { startMsg } }
-        def endStmt = macro(true) { println 'Ending ' + $v { startMsg } }
+        def msg = constX(method.name)
+        def startStmt = macro(true) { println 'Starting ' + $v { msg } }
+        def endStmt = macro(true) { println 'Ending ' + $v { msg } }
         if (method instanceof ConstructorNode) {
             startStmt = macro(true) { println 'Created on ' + new java.util.Date() }
             endStmt = null

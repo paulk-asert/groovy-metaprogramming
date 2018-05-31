@@ -1,0 +1,16 @@
+def subprojects = [
+        'AstTransforms',
+        'Part1Exercises',
+        'Part1Solutions',
+        'CustomCanonicalExercise',
+        'CustomCanonicalSolution',
+        'Macros',
+        'WithLoggingExercise',
+        'WithLoggingSolution',
+        'WithLoggingMacroSolution'
+]
+subprojects.each {
+    include it
+}
+
+rootProject.name = 'groovy-metaprogramming'

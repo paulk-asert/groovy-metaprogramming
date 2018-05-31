@@ -7,13 +7,8 @@ buildscript {
     }
 }
 
-apply plugin: 'groovy'
 apply plugin: 'org.asciidoctor.gradle.asciidoctor'
-repositories {
-    jcenter()
-}
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.5.0-beta-2'
-    testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+    compile 'org.codehaus.groovy:groovy-all:2.5.0-rc-3'
 }
